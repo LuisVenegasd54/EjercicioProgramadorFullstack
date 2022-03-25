@@ -1,5 +1,6 @@
 import express,{json} from "express";
 import IndexRoutes from "./routes/index.routes";
+import stats from "./routes/stats.routes";
 
 const app=express();
 
@@ -12,6 +13,8 @@ app.use(json());
 
 
 //routers
-app.use(IndexRoutes);
+app.use("/mutation",IndexRoutes);
+app.use("/stats",stats);
+
 
 export default app;
