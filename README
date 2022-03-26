@@ -1,0 +1,111 @@
+## webAPI de Mutaciones  
+Este web api se encarga de por observar si un arreglo contiene una mutación
+
+##Rutas
+
+##Ruta "/mutation" POST
+Esta ruta recibe un objeto  con la siguiente estructura 
+{
+    "dna":["TGCATG", "GACTTC", "ATGCGA", "GACTAG", "AATGCA", "ATGCGT"]
+}
+donde validara si esta arreglo contiene una mutacion o no
+En caso de la estructura del arreglo llega hacer errónea la respuesta emitida seria la siguiente 
+{
+    "statuscode": 200,
+    "haserrors": false,
+    "data": "",
+    "message": "El contenido no cumple con las bases nitrogenadas estas son  (A,T,C,G), favor de verificar nueva mente."
+}
+Informándonos sobre el error encontrado 
+
+
+
+##Ruta "/stats" GET
+Esta ruta nos retorna los ultimos 10 elementos de cada colección (no Mutaciones y mutaciones)
+donde nos dice cuantos elementos tenemos insertados en cada colecciónm con este servicio podemos 
+realizar un grafico 
+##Ejemplo de la respuesta del servicio 
+
+{
+    "statuscode": 200,
+    "haserrors": false,
+    "data": {
+        "count_mutations": 16,
+        "count_no_mutation": 8,
+        "ratio": 2
+    }
+}
+
+##Ruta "/list/mutations"
+Este servicio nos retorna los últimos 10 inserciones que se realizaron en la colección de mutaciones 
+##Ejemplo de la respuesta 
+{
+"statuscode": 200,
+    "haserrors": false,
+    "data": {
+        "_responseMutation": [
+            {
+                "_id": "623e69ff40a7f0399573469e",
+                "dna": [
+                    "AAAAAA",
+                    "GGGGGG",
+                    "TTATGT",
+                    "AGAAGG",
+                    "CCCCTA",
+                    "TCACTG"
+                ],
+                "date": "25/3/2022",
+                "countMutation": 3
+            },
+            {
+                "_id": "623e68fa3d58a2eb398229ad",
+                "dna": [
+                    "AAAAAA",
+                    "GGGGGG",
+                    "TTATGT",
+                    "AGAAGG",
+                    "CCCCTA",
+                    "TCACTG"
+                ],
+                "date": "25/3/2022",
+                "countMutation": 3
+            }
+        ]
+    }
+}
+
+##Ruta "/list/notmutation"
+Este servicio nos retorna los últimos 10 inserciones que se realizaron en la colección de no mutaciones 
+##Ejemplo de la respuesta 
+{
+    "statuscode": 200,
+    "haserrors": false,
+    "data": {
+        "_responseMutation": [
+            {
+                "_id": "623e75030fdf5960905b2537",
+                "dna": [
+                    "TGCATG",
+                    "GACTTC",
+                    "ATGCGA",
+                    "GACTAG",
+                    "AATGCA",
+                    "ATGCGT"
+                ],
+                "date": "25/3/2022"
+            },
+            {
+                "_id": "623e5cdb55fb4ddcd9bc122b",
+                "dna": [
+                    "TGCATG",
+                    "GACTTC",
+                    "ATGCGA",
+                    "GACTAG",
+                    "AATGCA",
+                    "ATGCGT"
+                ],
+                "date": "25/3/2022"
+            }
+        ]
+    }
+}
